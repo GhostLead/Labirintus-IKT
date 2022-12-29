@@ -3,10 +3,10 @@ using static labirintus.Metodusok;
 
 namespace labirintus
 {
-    class Jatek
+    class Szerkeszto
     {
         //Ezt hívja meg a menü
-        public static void JatekKezdes() {
+        public static void SzerkesztoKezdes() {
             Console.WriteLine("Hello world");
         }
     }
