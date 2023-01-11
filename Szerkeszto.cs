@@ -13,6 +13,7 @@ namespace labirintus
 
         public static void SzerkesztoKezdes()
         {
+            Console.Clear();
             menu();
         }
 
