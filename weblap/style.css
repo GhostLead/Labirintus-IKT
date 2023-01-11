@@ -15,6 +15,24 @@ body{
   width: 20em;
   height: 15em;
 }
+select {  
+  margin-left: 1em;
+  background-color:#1F99CD;
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  background-size: auto 50%;
+  border-radius:2px;
+  border:none;
+  color: #ffffff;
+  padding: 10px 30px 10px 10px;
+  outline: none;
+}
+@-moz-document url-prefix() {
+  select {
+    color: rgba(0,0,0,0);
+    text-shadow: 0 0 0 #ffffff;
+  }
+}
 header{
 
     padding-top: 3em;
