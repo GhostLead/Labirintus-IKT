@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Threading;
 //using static labirintus.Metodusok;
 
 namespace labirintus 
@@ -33,7 +34,6 @@ namespace labirintus
 
         static char[,] szerkesztes(char[,] palya, List<char> lista)
         {
-            List<char> falak = new List<char>() { '╬', '═', '╦', '╩', '║', '╣', '╠', '╗', '╝', '╚', '╔', '█', '▄' };
 
             while (true)
             {
@@ -54,7 +54,61 @@ namespace labirintus
 
                 if (input == "")
                 {
-                    mentes(palya,falak);
+
+                    int szoba_darab = 0;
+                    int kijarat_darab = 0;
+                    int ut_darab = 0;
+
+                    for (int sorIndex = 0; sorIndex < palya.GetLength(0); sorIndex++)
+                    {
+                        for (int oszlopIndex = 0; oszlopIndex < palya.GetLength(1); oszlopIndex++)
+                        {
+
+                            if (palya[sorIndex, oszlopIndex] == lista[lista.Count - 1])
+                            {
+                                kijarat_darab++;
+                            }
+                            else if (palya[sorIndex, oszlopIndex] == lista[lista.Count - 2])
+                            {
+                                szoba_darab++;
+                            }
+                            else if (palya[sorIndex, oszlopIndex] == lista[0] ||
+                                palya[sorIndex, oszlopIndex] == lista[1] ||
+                                palya[sorIndex, oszlopIndex] == lista[2] ||
+                                palya[sorIndex, oszlopIndex] == lista[3] ||
+                                palya[sorIndex, oszlopIndex] == lista[4] ||
+                                palya[sorIndex, oszlopIndex] == lista[5] ||
+                                palya[sorIndex, oszlopIndex] == lista[6] ||
+                                palya[sorIndex, oszlopIndex] == lista[7] ||
+                                palya[sorIndex, oszlopIndex] == lista[8] ||
+                                palya[sorIndex, oszlopIndex] == lista[9] ||
+                                palya[sorIndex, oszlopIndex] == lista[10])
+                            {
+                                ut_darab++;
+                            }
+
+                            else if (szoba_darab == 0)
+                            {
+                                Console.WriteLine("Nincs a pályán szoba!!");
+                                Thread.Sleep(3000);
+                                mentes(palya);
+                            }
+                            else if (kijarat_darab == 0)
+                            {
+                                Console.WriteLine("Nincs a pályán kijárat!!");
+                                Thread.Sleep(3000);
+                                mentes(palya);
+                            }
+                            else if (ut_darab == 0)
+                            {
+                                Console.WriteLine("Nincs a pályán út!!");
+                                Thread.Sleep(3000);
+                                mentes(palya);
+                            }
+                        }
+                    }
+
+                    mentes(palya);
 
                     continue;
                 }
@@ -189,62 +243,19 @@ namespace labirintus
              
         }
 
-        static void mentes(char[,] mentesPalya, List<char> lista)
+        static void mentes(char[,] mentesPalya)
         {
-            int szoba_darab = 0;
-            int kijarat_darab = 0;
-            int ut_darab = 0;
+            List<char> falak = new List<char>() { '╬', '═', '╦', '╩', '║', '╣', '╠', '╗', '╝', '╚', '╔', '█', '▄' };
 
-            for (int sorIndex = 0; sorIndex < mentesPalya.GetLength(0); sorIndex++)
+            Console.WriteLine("Adja mege a fájl mentési nevét: ");
+            string nev = Console.ReadLine();
+
+            if (nev == "")
             {
-                for (int oszlopIndex = 0; oszlopIndex < mentesPalya.GetLength(1); oszlopIndex++)
-                {
-
-                    if (mentesPalya[sorIndex,oszlopIndex] == lista[lista.Count - 1])
-                    {
-                        kijarat_darab++;
-                    }
-                    else if (mentesPalya[sorIndex, oszlopIndex] == lista[lista.Count - 2])
-                    {
-                        szoba_darab++;
-                    }
-                    else if (mentesPalya[sorIndex, oszlopIndex] == lista[0] ||
-                        mentesPalya[sorIndex, oszlopIndex] == lista[1] ||
-                        mentesPalya[sorIndex, oszlopIndex] == lista[2] ||
-                        mentesPalya[sorIndex, oszlopIndex] == lista[3] ||
-                        mentesPalya[sorIndex, oszlopIndex] == lista[4] ||
-                        mentesPalya[sorIndex, oszlopIndex] == lista[5] ||
-                        mentesPalya[sorIndex, oszlopIndex] == lista[6] ||
-                        mentesPalya[sorIndex, oszlopIndex] == lista[7] ||
-                        mentesPalya[sorIndex, oszlopIndex] == lista[8] ||
-                        mentesPalya[sorIndex, oszlopIndex] == lista[9] ||
-                        mentesPalya[sorIndex, oszlopIndex] == lista[10])
-                    {
-                        ut_darab++;
-                    }
-
-                    else if (szoba_darab == 0)
-                    {
-                        Console.WriteLine("Nincs a pályán szoba!!");
-                        szerkesztes(pal);
-                    }
-                    else if(kijarat_darab == 0)
-                    {
-                        Console.WriteLine("Nincs a pályán kijárat!!");
-                        break;
-                    }
-                    else if(ut_darab == 0)
-                    {
-                        Console.WriteLine("Nincs a pályán út!!");
-                        break;
-                    }
-                }
+                szerkesztes(mentesPalya, falak);
             }
-            if (szoba_darab > 0 || kijarat_darab > 0 || ut_darab > 0)
+            else
             {
-                Console.WriteLine("Adja mege a fájl mentési nevét: ");
-                string nev = Console.ReadLine();
-
                 string[] sorok = new string[mentesPalya.GetLength(0)];
 
                 for (int sorIndex = 0; sorIndex < mentesPalya.GetLength(0); sorIndex++)
@@ -256,7 +267,9 @@ namespace labirintus
                 }
                 File.WriteAllLines(nev, sorok);
             }
+
             
+
         }
 
         static char[,] betoltes(string palyaNeve)
