@@ -1,18 +1,23 @@
 using System;
 using System.Collections.Generic;
+
+namespace labirintus
+{
+class Metodusok
+{
 /// <summary>
 /// Megadja, hogy hány termet tartamaz a térkép
 /// </summary>
 /// <param name="map">Labirintus mátrixa</param>
 /// <returns>Termek száma</returns>
-static int GetRoomNumber(char[,] map)
+public static int GetRoomNumber(char[,] map)
 {
     int szobakSzama = 0;
     for (int i = 0; i < map.GetLength(0); i++)
     {
         for (int y = 0; y < map.GetLength(1); y++)
         {
-            if (map[i,y]=='▒')
+            if (map[i,y]=='█')
             {
                 szobakSzama++;
             }
@@ -25,7 +30,7 @@ static int GetRoomNumber(char[,] map)
 /// </summary>
 /// <param name="map">Labirintus mátrixa</param>
 /// <returns>Az alkalmas kijáratok száma</returns>
-static int GetSuitableEntrance(char[,] map)
+public static int GetSuitableEntrance(char[,] map)
 {
     char[] Felul = { '╬',  '╩', '║', '╣', '╠', '╝', '╚'};
     char[] Alul = { '╬', '╦',  '║', '╣', '╠', '╗',  '╔', };
@@ -65,7 +70,7 @@ static int GetSuitableEntrance(char[,] map)
 /// </summary>
 /// <param name="map">Labirintus mátrixa</param>
 /// <returns>true - A térkép tartalmaz szabálytalan karaktert, false - nincs benne ilyen</returns>
-static bool IsInvalidElement(char[,] map)
+public static bool IsInvalidElement(char[,] map)
 {
     bool Tartalom = false;
     char[] Karakterek = { '╬', '═', '╦', '╩', '║', '╣', '╠', '╗', '╝', '╚', '╔', '█', '.' };
@@ -90,7 +95,7 @@ static bool IsInvalidElement(char[,] map)
 /// </summary>
 /// <param name="map">Labirintus mátrixa</param>
 /// <returns>A pozíciók "sor_index:oszlop_index" formátumban szerepelnek a lista elemeiként
-static List<string> GetUnavailableElements(char[,] map)
+public static List<string> GetUnavailableElements(char[,] map)
 {
     List<string> unavailables = new List<string>();
     // ?
@@ -102,9 +107,10 @@ static List<string> GetUnavailableElements(char[,] map)
 /// </summary>
 /// <param name="positionsList">"sor_index:oszlop_index" formátumban az egymáshoz kapcsolódó járatok pozícióit tartalmazó lista </param>
 /// <returns>A létrehozott labirintus térképe</returns>
-static char[,] GenerateLabyrinth(List<string> positionsList)
+public static char[,] GenerateLabyrinth(List<string> positionsList)
 {
     return null;
 
 }
-
+}
+}
