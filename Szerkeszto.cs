@@ -11,7 +11,7 @@ namespace labirintus
         const char JEL = '.';
 
 
-        static void Main(string[] args)
+        static void SzerkesztoKezdes(string[] args)
         {
             menu();
         }
