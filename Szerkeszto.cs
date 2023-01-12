@@ -10,7 +10,7 @@ namespace labirintus
     {
         const char JEL = '.';
         public static int nyelv = 3;
-        public static void SzerkesztoKezdes(string[] args)
+        public static void SzerkesztoKezdes()
         {
             nyelv = 0;
             while (true)
