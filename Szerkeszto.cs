@@ -66,7 +66,7 @@ namespace labirintus
 
                 if (nyelv == 0)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\n[M]enü");
                     Console.WriteLine("[U]res pálya");
                     Console.WriteLine("[T]örlés (csak egy karakter törlése)");
@@ -76,7 +76,7 @@ namespace labirintus
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\n[M]enu");
                     Console.WriteLine("[E]mpty map");
                     Console.WriteLine("[D]elete (only one character)");
@@ -308,7 +308,7 @@ namespace labirintus
                     {
                         Console.WriteLine("Mennyit szeretne lerakni: ");
                         int darab = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("Használható karakterek: (0)'╬', (1)'═', (2)'╦', (3)'╩', (4)'║', (5)'╣', (6)'╠', (7)'╗', (8)'╝', (9)'╚', (10)'╔', (11)'█')");
+                        Console.WriteLine("Használható karakterek: [0] = '╬' , [1] = '═', [2] = '╦', [3] = '╩', [4] = '║', [5] = '╣', [6] = '╠', [7] = '╗', [8] = '╝', [9] = '╚', [10] = '╔', [11] = '█')");
                         Console.Write("A lehelyezendő karakter száma:");
                         int karakter = Convert.ToInt32(Console.ReadLine());
 
@@ -373,7 +373,7 @@ namespace labirintus
                     {
                         Console.WriteLine("How much do you want to place down? : ");
                         int darab = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("Usable characters: (0)'╬', (1)'═', (2)'╦', (3)'╩', (4)'║', (5)'╣', (6)'╠', (7)'╗', (8)'╝', (9)'╚', (10)'╔', (11)'█')");
+                        Console.WriteLine("Usable characters: [0] = '╬' , [1] = '═', [2] = '╦', [3] = '╩', [4] = '║', [5] = '╣', [6] = '╠', [7] = '╗', [8] = '╝', [9] = '╚', [10] = '╔', [11] = '█')");
                         Console.Write("The number of the chosen character:");
                         int karakter = Convert.ToInt32(Console.ReadLine());
 
@@ -437,37 +437,7 @@ namespace labirintus
 
                     
                 }
-                /*
-                if (nyelv == 0)
-                {
-                    if (input != "U" || input != "u" || input != "" || input.Contains(':') == false || input != "u" || input != "U" || input != "M" || input != "m")
-                    {
-                        Console.WriteLine("Hibás megadás");
-                        Console.ReadKey();
-                        Console.Clear();
-                    }
-                }
-                else
-                {
-                    if (input != "E" || input != "e" || input != "" || input.Contains(':') == false || input != "D" || input != "d" || input != "M" || input != "m")
-                    {
-
-                        if (nyelv == 0)
-                        {
-                            Console.WriteLine("Hibás megadás!");
-                            Console.ReadKey();
-                            Console.Clear();
-                        }
-                        else
-                        {
-                            Console.WriteLine("Wrong input!");
-                            Console.ReadKey();
-                            Console.Clear();
-                        }
-
-                        
-                    }
-                }*/
+               
 
                 
             }
